@@ -9,7 +9,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 
 export async function generateStaticParams() {
-  const products = getProducts; // or fetch from API/DB
+  const products = getProducts(); // or fetch from API/DB
   console.log(products);
   return [{ id: "1" }, { id: "2" }, { id: "3" }];
 }
