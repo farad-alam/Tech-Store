@@ -14,17 +14,32 @@ import { notFound } from "next/navigation";
 //   return [{ id: "1" }, { id: "2" }, { id: "3" }];
 // }
 
-export async function generateStaticParams() {
-  const products = await getProducts(); // call the function
-  // map to the format Next.js expects
-  return products.map((p) => ({ id: p.id.toString() }));
+// export async function generateStaticParams() {
+//   const products = await getProducts(); // call the function
+//   // map to the format Next.js expects
+//   return products.map((p) => ({ id: p.id }));
+// }
+
+// export default async function ProductDetailPage({
+//   params,
+// }: {
+//   params: { id: string };
+// }) {
+//   const product = await getProduct(params.id);
+
+//   if (!product) {
+//     notFound();
+//   }
+export async function generateStaticParams(): Promise<{ id: string }[]> {
+  const products = await getProducts(); // ✅ call the function
+  return products.map((p) => ({ id: p.id })); // ✅ return array of params
 }
 
-export default async function ProductDetailPage({
-  params,
-}: {
+interface Params {
   params: { id: string };
-}) {
+}
+
+export default async function ProductDetailPage({ params }: Params) {
   const product = await getProduct(params.id);
 
   if (!product) {
