@@ -2,45 +2,16 @@ import { Footer } from "@/components/footer";
 import { Navbar } from "@/components/navbar";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import { getProduct } from "@/lib/products";
+import { getProduct, getProducts } from "@/lib/products";
 import { ArrowLeft, Shield, Star, Truck } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 
-// export async function generateStaticParams() {
-//   const products = getProducts(); // or fetch from API/DB
-//   console.log(products);
-//   return [{ id: "1" }, { id: "2" }, { id: "3" }];
-// }
-
-// export async function generateStaticParams() {
-//   const products = await getProducts(); // call the function
-//   // map to the format Next.js expects
-//   return products.map((p) => ({ id: p.id }));
-// }
-
-// export default async function ProductDetailPage({
-//   params,
-// }: {
-//   params: { id: string };
-// }) {
-//   const product = await getProduct(params.id);
-
-//   if (!product) {
-//     notFound();
-//   }
-// export async function generateStaticParams(): Promise<{ id: string }[]> {
-//   const products = await getProducts(); // ✅ call the function
-//   return products.map((p) => ({ id: p.id })); // ✅ return array of params
-// }
-
-export async function generateStaticParams(): Promise<{ id: string }[]> {
-  return [
-    { id: "1" },
-    { id: "2" },
-    { id: "3" }, // ✅ trailing comma is okay
-  ]; // ✅ notice the semicolon and no extra braces
+export async function generateStaticParams() {
+  const products = await getProducts(); // or fetch from API/DB
+  console.log(products);
+  return [{ id: "1" }, { id: "2" }, { id: "3" }];
 }
 
 interface Params {
