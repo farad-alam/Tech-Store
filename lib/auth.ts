@@ -59,21 +59,14 @@ export const authOptions: AuthOptions = {
   },
 
   callbacks: {
-    // Add user ID to JWT token
     async jwt({ token, user }) {
-      if (user) {
-        token.id = (user as any).id; // user.id is string
-      }
+      if (user) token.id = (user as any).id;
       return token;
     },
-
-    // Include user ID in session
-    // async session({ session, token }) {
-    //   if (token) {
-    //     session?.user?.id = token.id as string;
-    //   }
-    //   return session;
-    // },
+    async session({ session, token }) {
+      if (token) session?.user?.id = token.id as string;
+      return session;
+    },
   },
 };
 
