@@ -40,7 +40,7 @@ export default function RegisterPage() {
 
       if (res.ok) {
         toast.success("Account created! You can log in now.");
-        router.push("/products");
+        router.push("/login");
       } else {
         const data = await res.json();
         toast.error(data.error || "Registration failed.");
@@ -116,10 +116,8 @@ export default function RegisterPage() {
             </div>
           </div>
           <form onSubmit={handleRegister} className="space-y-4">
-            <div>
-              <Label htmlFor="name" className="pb-3">
-                Name
-              </Label>
+            <div className="space-y-2">
+              <Label htmlFor="name">Name</Label>
               <Input
                 id="name"
                 value={name}
@@ -127,10 +125,8 @@ export default function RegisterPage() {
                 required
               />
             </div>
-            <div>
-              <Label htmlFor="email" className="pb-3">
-                Email
-              </Label>
+            <div className="space-y-2">
+              <Label htmlFor="email">Email</Label>
               <Input
                 id="email"
                 type="email"
@@ -139,10 +135,8 @@ export default function RegisterPage() {
                 required
               />
             </div>
-            <div>
-              <Label htmlFor="password" className="pb-3">
-                Password
-              </Label>
+            <div className="space-y-2">
+              <Label htmlFor="password">Password</Label>
               <Input
                 id="password"
                 type="password"
