@@ -2,7 +2,7 @@ import { Footer } from "@/components/footer";
 import { Navbar } from "@/components/navbar";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import { getProduct, getProducts } from "@/lib/products";
+import { getProduct } from "@/lib/products";
 import { ArrowLeft, Shield, Star, Truck } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
@@ -30,9 +30,17 @@ import { notFound } from "next/navigation";
 //   if (!product) {
 //     notFound();
 //   }
+// export async function generateStaticParams(): Promise<{ id: string }[]> {
+//   const products = await getProducts(); // ✅ call the function
+//   return products.map((p) => ({ id: p.id })); // ✅ return array of params
+// }
+
 export async function generateStaticParams(): Promise<{ id: string }[]> {
-  const products = await getProducts(); // ✅ call the function
-  return products.map((p) => ({ id: p.id })); // ✅ return array of params
+  return [
+    { id: "1" },
+    { id: "2" },
+    { id: "3" }, // ✅ trailing comma is okay
+  ]; // ✅ notice the semicolon and no extra braces
 }
 
 interface Params {
