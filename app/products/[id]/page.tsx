@@ -2,17 +2,16 @@ import { Footer } from "@/components/footer";
 import { Navbar } from "@/components/navbar";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import { getProduct, getProducts } from "@/lib/products";
+import { getProduct } from "@/lib/products";
 import { ArrowLeft, Shield, Star, Truck } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 
-export async function generateStaticParams() {
-  const products = await getProducts(); // or fetch from API/DB
-  console.log(products);
-  return [{ id: "1" }, { id: "2" }, { id: "3" }];
-}
+// export async function generateStaticParams() {
+//   const products = await getProducts();
+//   return [{ id: "1" }, { id: "2" }, { id: "3" }];
+// }
 
 interface Params {
   params: { id: string };
