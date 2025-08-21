@@ -40,7 +40,7 @@ export default function RegisterPage() {
 
       if (res.ok) {
         toast.success("Account created! You can log in now.");
-        router.push("/login");
+        router.push("/products");
       } else {
         const data = await res.json();
         toast.error(data.error || "Registration failed.");
