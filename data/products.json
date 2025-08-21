@@ -1,0 +1,26 @@
+[
+  {
+    "id": "1",
+    "name": "Premium Headphones",
+    "description": "High-quality wireless headphones with noise cancellation and premium sound quality.",
+    "price": 299.99,
+    "imageUrl": "https://images.pexels.com/photos/3394650/pexels-photo-3394650.jpeg?auto=compress&cs=tinysrgb&w=500",
+    "createdAt": "2025-08-21T04:34:38.337Z"
+  },
+  {
+    "id": "2",
+    "name": "Smart Watch",
+    "description": "Advanced fitness tracker with heart rate monitoring and GPS capabilities.",
+    "price": 199.99,
+    "imageUrl": "https://images.pexels.com/photos/1649771/pexels-photo-1649771.jpeg?auto=compress&cs=tinysrgb&w=500",
+    "createdAt": "2025-08-21T04:34:38.337Z"
+  },
+  {
+    "id": "3",
+    "name": "Wireless Earbuds",
+    "description": "Compact wireless earbuds with crystal clear sound and long battery life.",
+    "price": 89.99,
+    "imageUrl": "https://images.pexels.com/photos/8534088/pexels-photo-8534088.jpeg?auto=compress&cs=tinysrgb&w=500",
+    "createdAt": "2025-08-21T04:34:38.337Z"
+  }
+]
