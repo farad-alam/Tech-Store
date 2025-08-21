@@ -1,5 +1,4 @@
 import bcrypt from "bcryptjs";
-import type { User as NextAuthUser } from "next-auth";
 import NextAuth, { AuthOptions } from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
 import GoogleProvider from "next-auth/providers/google";
@@ -21,29 +20,26 @@ export const authOptions: AuthOptions = {
         email: { label: "Email", type: "email" },
         password: { label: "Password", type: "password" },
       },
-      async authorize(credentials): Promise<NextAuthUser | null> {
+      async authorize(credentials) {
         await connectDB();
 
         if (!credentials?.email || !credentials?.password) return null;
 
-        // Use generic to tell TS the document type
         const user = await User.findOne({ email: credentials.email }).lean();
-
         if (!user) return null;
 
         const isValid = await bcrypt.compare(
           credentials.password,
           user.password
         );
-
         if (!isValid) return null;
 
-        // Return NextAuth-compatible User object
+        // Return DB user object directly
         return {
-          id: user._id.toString(), // ✅ ensures string
+          id: user._id.toString(), // convert ObjectId to string
           name: user.name,
           email: user.email,
-        } as NextAuthUser;
+        };
       },
     }),
   ],
@@ -60,12 +56,12 @@ export const authOptions: AuthOptions = {
 
   callbacks: {
     async jwt({ token, user }) {
-      if (user) token.id = (user as any).id;
+      if (user) token.id = (user as any).id; // user.id is string
       return token;
     },
     async session({ session, token }) {
-      if (token && session.user) {
-        session.user.id = token.id as string; // ✅ no TS error
+      if (session.user && token.id) {
+        session.user.id = token.id as string;
       }
       return session;
     },

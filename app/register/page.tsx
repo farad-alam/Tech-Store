@@ -117,7 +117,9 @@ export default function RegisterPage() {
           </div>
           <form onSubmit={handleRegister} className="space-y-4">
             <div>
-              <Label htmlFor="name">Name</Label>
+              <Label htmlFor="name" className="pb-3">
+                Name
+              </Label>
               <Input
                 id="name"
                 value={name}
@@ -126,7 +128,9 @@ export default function RegisterPage() {
               />
             </div>
             <div>
-              <Label htmlFor="email">Email</Label>
+              <Label htmlFor="email" className="pb-3">
+                Email
+              </Label>
               <Input
                 id="email"
                 type="email"
@@ -136,7 +140,9 @@ export default function RegisterPage() {
               />
             </div>
             <div>
-              <Label htmlFor="password">Password</Label>
+              <Label htmlFor="password" className="pb-3">
+                Password
+              </Label>
               <Input
                 id="password"
                 type="password"
